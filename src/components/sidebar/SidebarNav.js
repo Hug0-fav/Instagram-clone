@@ -204,8 +204,13 @@ function SidebarNav({
       </IconNdName>
 
       <IconNdName
-        active={activeMenu === "messages"}
-        onClick={() => setActiveMenu("messages")}
+        active={activeMenu === "inbox"}
+        isMobileMode={isMobileMode}
+        onClick={() => {
+          setActiveMenu("inbox");
+          setActiveComponent("inbox");
+          toggleComponent("inbox");
+        }}
       >
         <MessageCircle size={27} />
         <span>Messages</span>
@@ -213,7 +218,11 @@ function SidebarNav({
 
       <IconNdName
         active={activeMenu === "notifications"}
-        onClick={() => setActiveMenu("notifications")}
+        onClick={() => {
+          // setActiveMenu("notifications");
+          setActiveComponent("notifications");
+          toggleComponent("notifications");
+        }}
       >
         <Heart size={27} />
         <span>Notifications</span>
@@ -221,7 +230,11 @@ function SidebarNav({
 
       <IconNdName
         active={activeMenu === "create"}
-        onClick={() => setActiveMenu("create")}
+        onClick={() => {
+          // setActiveMenu("create");
+          setActiveComponent("create");
+          closeComponent("create");
+        }}
       >
         <SquarePlus size={27} />
         <span>Create</span>
@@ -247,7 +260,13 @@ function SidebarNav({
           <span>More</span>
         </MoreOptionIconNdName>
 
-        <MoreOptionIconNdName>
+        <MoreOptionIconNdName
+          isMobileMode={isMobileMode}
+          onClick={() => {
+            setActiveComponent("meta");
+            closeComponent("meta");
+          }}
+        >
           <Boxes size={27} />
           <span>Also from Meta</span>
         </MoreOptionIconNdName>
